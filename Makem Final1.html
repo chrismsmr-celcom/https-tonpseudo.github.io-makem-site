@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAKEM — Créer, Investir, Transformer</title>
+  <meta name="description" content="MAKEM est un groupe basé à Kinshasa, actif dans l'agroalimentaire, l'énergie, la construction et les mines. Une vision : créer, investir et transformer l'avenir de la RDC." />
+  <meta name="theme-color" content="#0b0e13" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MAKEM — Créer, Investir, Transformer">
+  <meta property="og:description" content="Groupe d'entreprises diversifié à Kinshasa : Yabiso Food, MKM Énergie, MKM Construction, MKM Mine.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: {
+              900: '#0b0e13',  /* fond principal - anthracite bleu nuit */
+              800: '#11151b',
+              700: '#161b22'
+            },
+            ink: {
+              100: '#e6e7ea',  /* texte clair */
+              300: '#b7bcc6',
+              500: '#8f97a6'
+            },
+            brand: {
+              gold: '#C9A86A', /* accent doré chic */
+              goldDim: '#A88A55',
+              blue: '#2E6DE7'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.35)'
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif']
+          },
+          keyframes: {
+            fadeUp: { '0%': {opacity:0, transform:'translateY(14px)'}, '100%': {opacity:1, transform:'translateY(0)'} },
+            pulseRing: {
+              '0%': { boxShadow: '0 0 0 0 rgba(201,168,106,0.35)' },
+              '80%': { boxShadow: '0 0 0 12px rgba(201,168,106,0)' },
+              '100%': { boxShadow: '0 0 0 0 rgba(201,168,106,0)' }
+            }
+          },
+          animation: {
+            fadeUp: 'fadeUp .5s ease forwards',
+            ring: 'pulseRing 2.4s ease-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Texture subtile + dégradés sans image */
+    .bg-grid {
+      background-image:
+        linear-gradient(180deg, rgba(255,255,255,0.04) 0.5px, transparent 0.5px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 0.5px, transparent 0.5px);
+      background-size: 28px 28px, 28px 28px;
+    }
+    .bg-radial {
+      background:
+        radial-gradient(1200px 1200px at 80% -10%, rgba(201,168,106,0.10), transparent 60%),
+        radial-gradient(800px 800px at 0% 120%, rgba(46,109,231,0.10), transparent 60%);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .will-animate { animation: none !important; transform: none !important; opacity: 1 !important; }
+    }
+  </style>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"MAKEM",
+    "url":"https://example.com",
+    "logo":"https://example.com/logo.png",
+    "address":{"@type":"PostalAddress","addressLocality":"Kinshasa","addressCountry":"CD"},
+    "sameAs":[]
+  }
+  </script>
+</head>
+<body class="bg-base-900 text-ink-100 font-inter selection:bg-brand-gold selection:text-base-900">
+
+  <!-- NAV -->
+  <header class="fixed inset-x-0 top-0 z-50">
+    <nav class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between rounded-b-xl bg-base-900/70 backdrop-blur supports-[backdrop-filter]:bg-base-900/60 border border-base-800/60">
+        <a href="#top" class="flex items-center px-3 py-2" aria-label="MAKEM Accueil">
+  <span class="text-xl md:text-2xl font-extrabold tracking-wide">MAKEM</span>
+</a>    
+                  <button id="btnMenu" class="lg:hidden px-8 py-2" aria-label="Ouvrir le menu">
+          <svg class="h-6 w-6 text-ink-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <div id="menu" class="hidden lg:flex items-center gap-8 pr-2">
+          <a href="#vision" class="text-ink-300 hover:text-brand-gold transition">Vision</a>
+          <a href="#poles" class="text-ink-300 hover:text-brand-gold transition">Pôles</a>
+          <a href="#projets" class="text-ink-300 hover:text-brand-gold transition">Projets</a>
+          <a href="#contact" class="text-ink-300 hover:text-brand-gold transition">Contact</a>
+          <a href="#contact" class="ml-2 inline-flex items-center gap-2 rounded-md bg-brand-gold px-4 py-2 font-semibold text-base-900 hover:bg-brand-goldDim transition shadow-soft">
+            Nous écrire
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Drawer mobile -->
+    <div id="drawer" class="fixed inset-0 z-40 hidden">
+      <div class="absolute inset-0 bg-black/60" aria-hidden="true"></div>
+      <div class="ml-auto h-full w-80 bg-base-800 border-l border-base-700 p-6 space-y-6">
+        <div class="flex items-center justify-between">
+          <span class="font-bold">Menu</span>
+          <button id="btnClose" aria-label="Fermer le menu">
+            <svg class="h-6 w-6 text-ink-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="flex flex-col gap-4">
+          <a class="hover:text-brand-gold" href="#vision">Vision</a>
+          <a class="hover:text-brand-gold" href="#poles">Pôles</a>
+          <a class="hover:text-brand-gold" href="#projets">Projets</a>
+          <a class="hover:text-brand-gold" href="#contact">Contact</a>
+          <a class="mt-2 inline-flex items-center justify-center rounded-md bg-brand-gold px-4 py-2 font-semibold text-base-900 hover:bg-brand-goldDim">Nous écrire</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="relative">
+    <section class="pt-28">
+      <div class="relative isolate overflow-hidden bg-grid bg-radial">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 py-28 md:py-36">
+          <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 rounded-full border border-base-700 bg-base-800/70 px-3 py-1 text-xs text-ink-500 will-animate opacity-0 translate-y-3" data-animate>
+              <span class="h-2 w-2 rounded-full bg-brand-gold animate-ring"></span>
+              Basé à Kinshasa • RDC
+            </div>
+            <h1 class="mt-4 text-4xl md:text-6xl font-extrabold tracking-tight will-animate opacity-0 translate-y-4" data-animate>
+              Créer. Investir. <span class="text-brand-gold">Transformer</span>.
+            </h1>
+            <p class="mt-5 text-lg md:text-xl text-ink-300 max-w-2xl will-animate opacity-0 translate-y-4" data-animate>
+              MAKEM est un groupe d’entreprises engagé dans l’agroalimentaire, l’énergie, la construction et les mines.
+              Nous bâtissons des solutions durables qui élèvent la vie quotidienne.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3 will-animate opacity-0 translate-y-4" data-animate>
+              <a href="#contact" class="inline-flex items-center justify-center rounded-md bg-brand-gold px-6 py-3 font-semibold text-base-900 hover:bg-brand-goldDim transition shadow-soft">
+                Devenir partenaire
+              </a>
+              <a href="#poles" class="inline-flex items-center justify-center rounded-md border border-base-700 px-6 py-3 font-semibold text-ink-100 hover:border-brand-gold hover:text-brand-gold transition">
+                Découvrir nos pôles
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS / CONFIANCE -->
+    <section aria-labelledby="stats" class="border-t border-base-800/60">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-12 md:py-16">
+        <dl id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div class="rounded-lg bg-base-800 border border-base-700 p-6 will-animate opacity-0 translate-y-4" data-animate>
+            <dt class="text-ink-500 text-sm">Filiales</dt>
+            <dd class="mt-1 text-3xl font-extrabold">4</dd>
+          </div>
+          <div class="rounded-lg bg-base-800 border border-base-700 p-6 will-animate opacity-0 translate-y-4" data-animate>
+            <dt class="text-ink-500 text-sm">Focal RDC</dt>
+            <dd class="mt-1 text-3xl font-extrabold">Kinshasa</dd>
+          </div>
+          <div class="rounded-lg bg-base-800 border border-base-700 p-6 will-animate opacity-0 translate-y-4" data-animate>
+            <dt class="text-ink-500 text-sm">Engagement</dt>
+            <dd class="mt-1 text-3xl font-extrabold">Durable</dd>
+          </div>
+          <div class="rounded-lg bg-base-800 border border-base-700 p-6 will-animate opacity-0 translate-y-4" data-animate>
+            <dt class="text-ink-500 text-sm">Ambition</dt>
+            <dd class="mt-1 text-3xl font-extrabold">Continentale</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+    
+        <!-- HISTOIRE -->
+    <section id="histoire" class="border-t border-base-800/60">
+      <div class="mx-auto max-w-4xl px-6 lg:px-8 py-16 md:py-24">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-brand-gold">Notre Histoire</h2>
+          <div class="mt-6 space-y-5 text-ink-300 leading-relaxed">
+            <p><strong>Tout a commencé par un nom : Makem.</strong><br>
+            Un nom simple, mais porteur d’une histoire profonde.</p>
+
+            <p>Mon père, <strong>Emmanuel Makila Musumary</strong>, rêvait lui aussi d’entreprendre.  
+            Un jour, affaibli par la maladie, il me parla de son projet : <em>Makem Screen Design</em>.  
+            Pour lui, c’était peut-être momentané, une idée parmi d’autres.  
+            Mais pour moi, ce fut une révélation.</p>
+
+            <p>Derrière ce nom, je voyais plus qu’un projet : je voyais un héritage, un souffle de vie, une vision qui ne demandait qu’à grandir. Alors, j’ai décidé de reprendre ce flambeau.</p>
+
+            <p>Aujourd’hui, <strong>Makem</strong> n’est pas seulement une entreprise.  
+            C’est la continuité d’un rêve transmis de père en fils.  
+            C’est la preuve que même ce qui semble inachevé peut renaître, se transformer et briller à travers les générations.</p>
+
+            <p class="text-lg font-semibold text-ink-100">Makem, c’est l’héritage devenu futur.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- VISION -->
+    <section id="vision" class="border-t border-base-800/60">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 md:py-24">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div class="space-y-6 will-animate opacity-0 translate-y-4" data-animate>
+            <h2 class="text-3xl md:text-4xl font-extrabold">Notre vision</h2>
+            <p class="text-ink-300 text-lg">
+              Accélérer la création de valeur locale et la souveraineté économique par des projets concrets, performants et responsables.
+            </p>
+            <ul class="space-y-3">
+              <li class="flex gap-3">
+                <span class="mt-1 inline-block h-2 w-2 rounded-full bg-brand-gold"></span>
+                <span>Excellence opérationnelle et qualité sans compromis.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="mt-1 inline-block h-2 w-2 rounded-full bg-brand-gold"></span>
+                <span>Innovation pragmatique, centrée sur l’impact réel.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="mt-1 inline-block h-2 w-2 rounded-full bg-brand-gold"></span>
+                <span>Responsabilité sociale et environnementale mesurable.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 will-animate opacity-0 translate-y-4" data-animate>
+            <div class="rounded-xl bg-base-800 border border-base-700 p-6">
+              <h3 class="font-bold">Mission</h3>
+              <p class="mt-2 text-ink-300">Développer des solutions qui nourrissent, alimentent, bâtissent et valorisent les ressources.</p>
+            </div>
+            <div class="rounded-xl bg-base-800 border border-base-700 p-6">
+              <h3 class="font-bold">Valeurs</h3>
+              <p class="mt-2 text-ink-300">Exigence, intégrité, transparence, performance durable.</p>
+            </div>
+            <div class="rounded-xl bg-base-800 border border-base-700 p-6">
+              <h3 class="font-bold">Capacités</h3>
+              <p class="mt-2 text-ink-300">Opérations, supply, conformité, partenariats stratégiques.</p>
+            </div>
+            <div class="rounded-xl bg-base-800 border border-base-700 p-6">
+              <h3 class="font-bold">Gouvernance</h3>
+              <p class="mt-2 text-ink-300">Processus clairs, suivi KPI, amélioration continue.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÔLES -->
+    <section id="poles" class="border-t border-base-800/60">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 md:py-24">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl md:text-4xl font-extrabold will-animate opacity-0 translate-y-4" data-animate>Pôles d’activités</h2>
+          <p class="mt-3 text-ink-300 will-animate opacity-0 translate-y-4" data-animate>Quatre secteurs clés, intégrés et complémentaires.</p>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <!-- Yabiso Food -->
+          <article class="rounded-2xl bg-base-800 border border-base-700 p-6 hover:border-brand-gold transition will-animate opacity-0 translate-y-4" data-animate>
+            
+            <h3 class="font-bold text-xl">Yabiso Food</h3>
+            <p class="mt-2 text-ink-300">Distribution et agro-transformation. Fraîcheur, traçabilité, accessibilité.</p>
+            <a href="#contact" class="mt-4 inline-flex text-brand-gold hover:text-brand-goldDim">Parler partenariat →</a>
+          </article>
+
+          <!-- MKM Énergie -->
+          <article class="rounded-2xl bg-base-800 border border-base-700 p-6 hover:border-brand-gold transition will-animate opacity-0 translate-y-4" data-animate>
+            
+            <h3 class="font-bold text-xl">MKM Énergie</h3>
+            <p class="mt-2 text-ink-300">Solutions électriques fiables, hybrides et durables.</p>
+            <a href="#contact" class="mt-4 inline-flex text-brand-gold hover:text-brand-goldDim">Étudier un projet →</a>
+          </article>
+
+          <!-- MKM Construction -->
+          <article class="rounded-2xl bg-base-800 border border-base-700 p-6 hover:border-brand-gold transition will-animate opacity-0 translate-y-4" data-animate>
+            
+                        <h3 class="font-bold text-xl">MKM Construction</h3>
+            <p class="mt-2 text-ink-300">BTP, immobilier, génie civil. Standards internationaux.</p>
+            <a href="#contact" class="mt-4 inline-flex text-brand-gold hover:text-brand-goldDim">Demander une étude →</a>
+          </article>
+
+          <!-- MKM Mine -->
+          <article class="rounded-2xl bg-base-800 border border-base-700 p-6 hover:border-brand-gold transition will-animate opacity-0 translate-y-4" data-animate>
+            
+            <h3 class="font-bold text-xl">MKM Mine</h3>
+            <p class="mt-2 text-ink-300">Exploitation responsable, conformité et valorisation locale.</p>
+            <a href="#contact" class="mt-4 inline-flex text-brand-gold hover:text-brand-goldDim">Entrer en relation →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETS / MISE EN AVANT -->
+    <section id="projets" class="border-t border-base-800/60">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 md:py-24">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl md:text-4xl font-extrabold will-animate opacity-0 translate-y-4" data-animate>Projets phares</h2>
+          <p class="mt-3 text-ink-300 will-animate opacity-0 translate-y-4" data-animate>Feuille de route proactive, partenariats sélectifs.</p>
+        </div>
+
+        <div class="mt-10 grid lg:grid-cols-3 gap-6">
+          <div class="rounded-2xl bg-base-800 border border-base-700 p-6 will-animate opacity-0 translate-y-4" data-animate>
+            <h3 class="font-bold">Chaîne froide Yabiso</h3>
+            <p class="mt-2 text-ink-300">Stockage normé, hubs logistiques et livraison urbaine optimisée.</p>
+            <div class="mt-4 text-ink-500 text-sm">Phase : Design & Partenariats</div>
+          </div>
+          <div class="rounded-2xl bg-base-800 border border-base-700 p-6 will-animate opacity-0 translate-y-4" data-animate>
+            <h3 class="font-bold">Microgrids hybrides</h3>
+            <p class="mt-2 text-ink-300">Solaire + stockage + back-up pour sites industriels.</p>
+            <div class="mt-4 text-ink-500 text-sm">Phase : Études préliminaires</div>
+          </div>
+          <div class="rounded-2xl bg-base-800 border border-base-700 p-6 will-animate opacity-0 translate-y-4" data-animate>
+            <h3 class="font-bold">Programme BTP standardisé</h3>
+            <p class="mt-2 text-ink-300">Catalogues techniques, contrôle qualité et supply chain locale.</p>
+            <div class="mt-4 text-ink-500 text-sm">Phase : Spécifications</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="border-t border-base-800/60">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 md:py-20">
+        <div class="rounded-2xl bg-gradient-to-br from-base-800 to-base-700 border border-base-700 p-8 md:p-12 text-center will-animate opacity-0 translate-y-4" data-animate>
+          <h2 class="text-2xl md:text-3xl font-extrabold">Investir ensemble, construire durablement.</h2>
+          <p class="mt-3 text-ink-300">Vous avez un projet, une concession, une idée ? Parlons concret.</p>
+          <a href="#contact" class="mt-6 inline-flex items-center justify-center rounded-md bg-brand-gold px-6 py-3 font-semibold text-base-900 hover:bg-brand-goldDim transition shadow-soft">Entrer en contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="border-t border-base-800/60">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 py-16 md:py-24">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div class="space-y-6 will-animate opacity-0 translate-y-4" data-animate>
+            <h2 class="text-3xl md:text-4xl font-extrabold">Contact</h2>
+            <p class="text-ink-300">Kinshasa, République Démocratique du Congo</p>
+            <div class="space-y-3 text-ink-300">
+              <div class="flex items-center gap-3">
+                <span class="inline-block h-2 w-2 rounded-full bg-brand-gold"></span>
+                <a href="mailto:contact@makem-group.cd" class="hover:text-brand-gold">contact@makem-group.cd</a>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="inline-block h-2 w-2 rounded-full bg-brand-gold"></span>
+                <a href="tel:+243998379211" class="hover:text-brand-gold">+243 998 379 211</a>
+              </div>
+            </div>
+            <div class="pt-2">
+              <p class="text-sm text-ink-500">Réseaux (optionnel) — LinkedIn, WhatsApp Business, etc.</p>
+            </div>
+          </div>
+
+          <form class="rounded-2xl bg-base-800 border border-base-700 p-6 md:p-8 will-animate opacity-0 translate-y-4" data-animate onsubmit="event.preventDefault(); alert('Merci ! Dans une version live, ce formulaire sera relié à votre messagerie.');">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="text-sm text-ink-500">Nom complet</label>
+                <input required type="text" class="mt-1 w-full rounded-md bg-base-700 border border-base-600 px-3 py-2 text-ink-100 placeholder:text-ink-500 focus:outline-none focus:ring-2 focus:ring-brand-gold" placeholder="Votre nom">
+              </div>
+              <div>
+                <label class="text-sm text-ink-500">Email</label>
+                <input required type="email" class="mt-1 w-full rounded-md bg-base-700 border border-base-600 px-3 py-2 text-ink-100 placeholder:text-ink-500 focus:outline-none focus:ring-2 focus:ring-brand-gold" placeholder="vous@mail.com">
+              </div>
+              <div class="md:col-span-2">
+                <label class="text-sm text-ink-500">Sujet</label>
+                <select class="mt-1 w-full rounded-md bg-base-700 border border-base-600 px-3 py-2 text-ink-100 focus:outline-none focus:ring-2 focus:ring-brand-gold">
+                  <option>Demande d'information</option>
+                  <option>Partenariat - Yabiso Food</option>
+                  <option>Partenariat - MKM Énergie</option>
+                  <option>Partenariat - MKM Construction</option>
+                  <option>Partenariat - MKM Mine</option>
+                  <option>Opportunités d'emploi</option>
+                </select>
+              </div>
+              <div class="md:col-span-2">
+                <label class="text-sm text-ink-500">Message</label>
+                <textarea rows="4" class="mt-1 w-full rounded-md bg-base-700 border border-base-600 px-3 py-2 text-ink-100 placeholder:text-ink-500 focus:outline-none focus:ring-2 focus:ring-brand-gold" placeholder="Votre message..."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="mt-6 w-full rounded-md bg-brand-gold px-6 py-3 font-semibold text-base-900 hover:bg-brand-goldDim transition shadow-soft">Envoyer</button>
+            <p class="mt-3 text-xs text-ink-500">Démo. Pour un envoi réel : Formspree, EmailJS, backend Node/PHP.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-base-800/60">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 py-10">
+      <div class="grid md:grid-cols-4 gap-6">
+        <div>
+          <div class="flex items-center gap-5">
+            <span class="font-bold">MAKEM</span>
+          </div>
+          <p class="mt-3 text-ink-500">Groupe diversifié : alimentation, énergie, construction, mines.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold">Pôles</h3>
+          <ul class="mt-3 space-y-2 text-ink-300">
+            <li>Yabiso Food</li><li>MKM Énergie</li><li>MKM Construction</li><li>MKM Mine</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Ressources</h3>
+          <ul class="mt-3 space-y-2 text-ink-300">
+            <li>Gouvernance</li><li>Conformité</li><li>Partenariats</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Contact</h3>
+          <ul class="mt-3 space-y-2 text-ink-300">
+            <li><a class="hover:text-brand-gold" href="mailto:contact@makem-group.cd">contact@makem-group.cd</a></li>
+            <li><a class="hover:text-brand-gold" href="tel:+243 854 442 103">+243 998 379 211</a></li>
+            <li>Kinshasa, RDC</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 border-t border-base-800/60 pt-6 text-sm text-ink-500">
+        © <span id="year"></span> MAKEM Groupe. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Année dynamique
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu mobile
+    const btn = document.getElementById('btnMenu');
+    const drawer = document.getElementById('drawer');
+    const closeBtn = document.getElementById('btnClose');
+    btn?.addEventListener('click', () => drawer.classList.remove('hidden'));
+    closeBtn?.addEventListener('click', () => drawer.classList.add('hidden'));
+    drawer?.addEventListener('click', (e) => {
+      if (e.target === drawer) drawer.classList.add('hidden');
+    });
+
+    // Apparition on-scroll
+    const items = document.querySelectorAll('[data-animate]');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('animate-fadeUp');
+          e.target.classList.remove('opacity-0','translate-y-4','translate-y-3');
+          io.unobserve(e.target);
+        }
+      })
+    },{threshold:0.15});
+    items.forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
